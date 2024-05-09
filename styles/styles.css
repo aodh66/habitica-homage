@@ -1,0 +1,1972 @@
+/* VARIABLE DEFINITIONS */
+/* Colours */
+:root {
+  --white: hsl(0, 0%, 100%); /* true white */
+  --white50: hsla(0, 0%, 100%, 0.5); /*   true white 50% (customcheckbox) */
+  --white75: hsla(0, 0%, 100%, 0.75); /*   true white 75% (customcheckbox hovers) */
+  --dullwhite: hsl(0, 0%, 98%);
+  --offwhite: hsl(210, 17%, 98%); /* off white (classbadge) */
+  --offwhite2: hsl(270, 6%, 93%); /* off white (section) */
+
+  --verylightgrey: hsl(260, 5%, 88%); /* very light grey (bordershadow) */
+  --lightgrey: hsl(266, 6%, 77%); /* light grey (footerborder) */
+  --lightgrey2: hsl(262, 6%, 65%); /* light grey (text specific) */
+  --lightmidgrey: hsl(264, 6%, 54%); /* medium light grey (footerlogo) */
+
+  --midgrey: hsl(258, 8%, 32%); /* mid grey */
+  --darkmidgrey: hsl(260, 8%, 21%); /* dark grey */
+  --darkgrey: hsl(210, 11%, 15%); /* very dark grey */
+  --greycheck: hsl(0, 0%, 19%); /* mid dark grey (checks) */
+
+  --addsectionelement: hsla(264, 9%, 10%, 0.06); /* specific transparency values */
+  --borderboxshadow1: hsla(264, 9%, 10%, 0.16); /* specific transparency values */
+  --borderboxshadow2: hsla(264, 9%, 10%, 0.12); /* specific transparency values */
+  --borderboxshadow3: hsla(264, 9%, 10%, 0.24); /* specific transparency values */
+  --interactboxcircle: hsla(264, 9%, 10%, 0.25); /* specific transparency values */
+  --interactboxcirclehover: hsla(264, 9%, 10%, 0.5); /* specific transparency values */
+
+  --lightpurple: hsl(254, 100%, 89%); /* light purple (charinfo)*/
+  --lightmidpurple: hsl(254, 100%, 83%); /* medium light purple (purplebuttonsvg) */
+  --lightdarkpurple: hsl(261, 86%, 66%); /* darker light purple (searchbar)*/
+  --midlightpurple: hsl(261, 56%, 45%); /* light medium purple */
+  --purple: hsl(261, 56%, 37%); /* medium purple */
+  --middarkpurple: hsl(261, 49%, 31%); /* dark medium purple */
+  --middarkpurple2: hsl(261, 49%, 31%); /* dark medium purple (headerbackground) */
+  --darkmidpurple: hsl(262, 49%, 25%); /* medium dark purple (head)*/
+  --darkpurple: hsl(261, 39%, 17%); /* dark purple */
+
+  --lightgold: hsl(35, 100%, 95%); /* light gold */
+  --midgold: hsl(36, 100%, 68%); /* medium gold (xp)*/
+  --gold: hsl(36, 93%, 48%); /* gold */
+  --darkgold: hsl(37, 100%, 24%); /* dark gold */
+
+  --red: hsl(359, 91%, 64%); /* red (health) */
+
+  --lightblue: hsl(185, 66%, 54%); /* light blue */
+
+  --lightgreen: hsl(158, 70%, 47%); /* light green */
+}
+
+html {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  justify-content: space-between;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--midgrey);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  background: var(--dullwhite);
+  text-align: left;
+  max-height: 100vh;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ======================================================= */
+/* ===================== H E A D E R ===================== */
+/* ======================================================= */
+.page-head {
+  display: block;
+}
+
+.head-container {
+  box-shadow: 0 1px 2px 0 var(--borderboxshadow3);
+  background: var(--middarkpurple2) url("../images/headerimage.svg") 100% 0
+    no-repeat;
+  background-size: auto 56px;
+  min-height: 56px;
+  max-height: 56px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-top: 0.25rem;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+/* H E A D E R      I T E M S */
+.logo {
+  height: 30px;
+  width: 30px;
+  align-self: flex-start;
+  margin-bottom: 1.25rem;
+  margin-top: 0.75rem;
+  position: absolute;
+  left: calc(50% - 30px);
+}
+
+.big-logo {
+  display: none;
+}
+
+.nav-right-container {
+  display: flex;
+  justify-self: flex-end;
+  margin-right: 1.5rem;
+  margin-top: 0.25rem;
+}
+
+/* N A V I G A T I O N      M E N U */
+.nav-menu {
+  cursor: pointer;
+  justify-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  margin-left: 2rem;
+  margin-top: 0.5em;
+}
+
+.sync-button,
+.notification-dropdown,
+.user-dropdown {
+  border: 1px solid transparent;
+}
+
+.sync-button-img,
+.notification-dropdown-img,
+.user-dropdown-img {
+  height: 24px;
+  fill: var(--lightpurple);
+  cursor: pointer;
+  padding: 0 12px;
+  margin-top: 0.5em;
+}
+
+/* DROPDOWN TOGGLING FUNCTIONALITY */
+/* Nav toggle section */
+.toggle-button,
+.sub-toggle-button {
+  user-select: none;
+}
+
+/* TOGGLE CHECK DEBUG Uncomment to see checkmarks */
+.toggle-input {
+  display: none;
+}
+
+.toggled-content {
+  display: none;
+}
+
+#nav-toggler:checked ~ .nav-toggled-content,
+#notification-toggler:checked ~ .notification-toggled-content,
+#notification-subtoggler:checked ~ .notification-subdropdown,
+#user-toggler:checked ~ .user-toggled-content,
+#inv-toggler:checked ~ .inv-toggled-content,
+#shop-toggler:checked ~ .shop-toggled-content,
+#party-toggler:checked ~ .party-toggled-content,
+#guild-toggler:checked ~ .guild-toggled-content,
+#challenges-toggler:checked ~ .challenges-toggled-content,
+#help-toggler:checked ~ .help-toggled-content,
+#tag-toggler:checked ~ .tag-toggled-content {
+  display: block;
+}
+
+/* ! Not sure how to rotate the svgs based on being checked, prolly need to animate it */
+/* #notification-subtoggler:checked ~ .notification-dropdown-img {
+transform: rotate(180deg);
+} */
+
+.drop-content {
+  order: 2;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.nav-toggled-content {
+  text-align: center;
+}
+
+/* NAV CURRENCY READOUT */
+.currency-readout {
+  display: flex;
+  gap: 0 1em;
+  background-color: var(--darkpurple);
+  width: 100vw;
+  max-height: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.gems,
+.gold {
+  padding-top: 0.8em;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.gem-icon,
+.gold-icon {
+  width: 24px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+/* NAV MENU STYLING */
+.nav-menu-text {
+  padding: 0.8em 1em;
+  color: var(--white);
+  font-weight: 700;
+  display: block;
+  background-color: var(--purple);
+  border-bottom-color: var(--midlightpurple);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+/* NAV SUBMENU STYLING */
+.nav-menu-subtext {
+  display: block;
+  padding: 1rem 1.5rem;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--white);
+  background-color: var(--middarkpurple);
+  border-bottom-color: var(--midlightpurple);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.dropdown-arrow {
+  width: 1.5rem;
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+/* !not sure if you can animate this without JS */
+/* #inv-toggler:checked ~ .inv-toggler .dropdown-arrow {
+  animation: rot 0.5s linear;
+
+transform: rotate(-180deg);
+}*/
+
+/* arrow animation */
+/* @keyframes rot {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+} */
+
+.sub-toggle-button {
+  padding: 0 0.5em;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-menu-title {
+  justify-self: center;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+/* NOTIFICATION DROPDOWN */
+.notification-dropdown-text {
+  margin-bottom: 0;
+  color: var(--midgrey);
+  font-weight: 700;
+}
+
+/* Notification Dropdown Content */
+.notification-toggled-content {
+  position: absolute;
+  background: var(--white);
+  border-radius: 2px;
+  min-width: 378px;
+  min-height: 279px;
+  transform: translateX(-88%);
+  top: 90%;
+  /* z-index: 10; */
+}
+
+/* Notification Dropdown Header */
+.notification-head-container {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--verylightgrey);
+  padding: 16px 24px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+
+/* Notification Dropdown Checkboxes */
+.notification-dropdown-content-middle {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 12px 24px;
+  box-shadow: 0 2px 2px 0 var(--borderboxshadow1),
+    0 1px 4px 0 var(--borderboxshadow2);
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.day-checkbox {
+  width: 50%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.checkbox {
+  border-width: 5px;
+  margin-right: 3px;
+  margin-bottom: 1em;
+}
+
+/* Notification Dropdown Footer */
+.notification-dropdown-content-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+}
+
+.dismiss {
+  color: var(--lightgrey2);
+  font-size: 12px;
+}
+
+.notification-content-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notification-content-banner {
+  max-width: 154px;
+  max-height: 49px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+.notification-content-arrow {
+  width: 16px;
+  height: 10px;
+}
+
+.notification-bold-text {
+  color: var(--darkmidgrey);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.notification-content-text {
+  color: var(--darkgrey);
+}
+
+.gold-amount,
+.progress-percentage {
+  color: var(--gold);
+}
+
+.progress-bar-topper {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.progress-title {
+  font-weight: 700;
+}
+
+.progressbar,
+.progress {
+  height: 4px;
+  border-radius: 2px;
+}
+
+.progressbar {
+  background: var(--offwhite2);
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.progress {
+  background: var(--gold);
+  width: 60%;
+}
+
+.sub-task-box {
+  height: 80px;
+  display: flex;
+  padding: 11px 0 12px 0;
+  border-bottom: 1px dashed var(--verylightgrey);
+}
+
+.notification-subdropdown .sub-task-box:nth-child(5) {
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0;
+}
+
+.badge-img {
+  width: 24px;
+  height: 28px;
+  float: left;
+  margin: 12px 12px 12px 0;
+}
+
+.sub-task-box-wrapper {
+  padding-bottom: 12px;
+}
+
+.task-title {
+  margin-bottom: 4px;
+  font-size: 1rem;
+}
+
+.task-description {
+  margin-bottom: 1rem;
+  font-size: 12px;
+}
+
+.notification-subdropdown
+  .sub-task-box:nth-child(-n + 3)
+  .sub-task-box-wrapper
+  .task-title {
+  text-decoration: line-through;
+}
+
+.notification-subdropdown
+  .sub-task-box:nth-child(5)
+  .sub-task-box-wrapper
+  .task-title {
+  text-decoration: line-through;
+}
+
+/* USER DROPDOWN */
+.user-dropdown-link {
+  margin-bottom: 0;
+  color: var(--midgrey);
+  font-weight: 700;
+}
+
+/* User Dropdown Content */
+.user-toggled-content {
+  position: absolute;
+  background: var(--white);
+  border-radius: 2px;
+  min-width: 236px;
+  transform: translateX(-82%);
+  top: 90%;
+  box-shadow: 0 2px 2px 0 var(--borderboxshadow1),
+    0 1px 4px 0 var(--borderboxshadow2);
+}
+
+/* User Dropdown Links */
+.user-main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-dropdown-link {
+  padding: 8px 16px 8px 24px;
+  font-weight: 400;
+}
+
+.messages,
+.backgrounds,
+.achievements,
+.subscription,
+.log-out {
+  border-bottom: 1px solid var(--verylightgrey);
+}
+
+/* User Dropdown Footer */
+.user-dropdown-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 24px 24px 24px 24px;
+  gap: 6px;
+}
+
+.user-dropdown-footer-img {
+  width: 112px;
+  height: 48px;
+}
+
+.dismiss {
+  color: var(--lightgrey2);
+  font-size: 12px;
+}
+
+.user-dropdown-footer-title {
+  color: var(--midlightpurple);
+  font-size: 1rem;
+}
+
+.user-dropdown-footer-text {
+  text-align: center;
+  font-size: 12px;
+}
+
+/* ============================================================================ */
+/* ===================== S E C O N D A R Y    H E A D E R ===================== */
+/* ============================================================================ */
+/* Secondary Header */
+.headsection {
+  height: 184px;
+  background-color: var(--darkmidpurple);
+  padding: 9px 0 8px 24px;
+  display: flex;
+  overflow: hidden;
+}
+
+/* character icon */
+.character-icon,
+.party-icon {
+  min-width: 141px;
+  height: 147px;
+  margin-bottom: 20px;
+  border: red solid 1px;
+}
+
+.party-icon {
+  display: none;
+}
+
+.character-icon > p {
+  white-space: nowrap;
+}
+
+/* Character Stats */
+.stat-readout {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  margin: 0 24px 0 12px;
+}
+
+/* Sword Badge */
+.sword-class-icon {
+  width: 20px;
+  justify-self: center;
+  align-self: center;
+  margin: auto;
+}
+
+.class-badge {
+  background-color: hsl(210, 17%, 98%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  border-radius: 50%;
+  float: left;
+  margin: 0.5em 12px 8px 0;
+}
+
+/* Username & Character Name */
+.username {
+  color: var(--white);
+  font-weight: 700;
+  margin-bottom: 0.25em;
+}
+
+.character-info {
+  color: var(--lightpurple);
+  font-size: 12px;
+  white-space: nowrap;
+  margin-bottom: 8px;
+}
+
+/* Health and XP Readout */
+.health-icon,
+.xp-icon {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  margin-left: 0.25em;
+}
+
+.statbar {
+  height: 12px;
+  border-radius: 1px;
+  margin-top: 0.25rem;
+}
+
+.healthbar,
+.xpbar {
+  width: 160px;
+  min-width: 160px;
+  background: var(--darkpurple);
+}
+
+.health {
+  height: 12px;
+  width: 100%;
+  background: var(--red);
+}
+
+.xp {
+  height: 12px;
+  width: 60%;
+  background: var(--midgold);
+}
+
+.health-readout,
+.xp-readout {
+  display: flex;
+  gap: 0.5em;
+}
+
+/* View Party Button | Purple Button Styling */
+.purple-button {
+  background: var(--purple);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.219rem 0.75rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 var(--borderboxshadow2),
+    0 1px 2px 0 var(--borderboxshadow3);
+  color: var(--white);
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75em;
+  cursor: pointer;
+}
+
+.view-party {
+  align-self: center;
+  justify-self: flex-end;
+  white-space: nowrap;
+  margin-left: 10px;
+  display: none;
+}
+
+.purple-button-text {
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+/*  C O N T E N T      T O P P E R */
+.content-topper {
+  display: flex;
+  justify-content: stretch;
+  margin-bottom: 20px;
+  padding: 16px 12px 12px 24px;
+  min-width: 100%;
+  gap: 0.25em;
+  align-items: center;
+}
+
+/* Search and Tag section */
+/* Search Bar */
+/* ! make search bar take up full space */
+/* .search-tags {
+  display: flex;
+  justify-self: center;
+  margin-right: 50%;
+  grid-area: ;
+  align-self: 
+  grid-column: 1;
+  align-items: center;
+  gap: 0.5em;
+} */
+
+.search-bar {
+  border: 1px solid var(--lightgrey);
+  outline: none;
+  min-width: 100%;
+  height: 32px;
+  display: block;
+  border-radius: 2px;
+}
+
+.search-bar:focus-visible {
+  border-color: var(--lightdarkpurple);
+}
+
+.search-bar-label {
+  min-width: 100%;
+  justify-self: stretch;
+  display: block;
+  flex-grow: 1;
+}
+
+/* Tag Dropdown Button */
+.tag-dropdown {
+  display: none;
+}
+
+/* Add Task Button */
+.purple-button-svg {
+  fill: var(--lightmidpurple);
+  width: 10px;
+}
+
+.add-task {
+  width: 106px;
+}
+
+/* =========================================================================== */
+/* ===================== M A I N    4    S E C T I O N S ===================== */
+/* =========================================================================== */
+.main-4-sections {
+  margin: 0 12px;
+}
+
+/* UNIVERSAL SECTION STYLING */
+.section {
+  padding: 0 12px;
+  margin-bottom: 30px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-title {
+  color: var(--darkmidgrey);
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.filters {
+  display: flex;
+  color: var(--midgrey);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.filters > p {
+  padding: 8px 8px 6px 8px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.filter1 {
+  border-bottom: var(--purple) solid 2px;
+}
+
+.section-content {
+  background: var(--offwhite2);
+  border-radius: 4px;
+  padding: 8px 8px 8px 8px;
+}
+
+.add-section-element {
+  border-radius: 2px;
+  background-color: var(--addsectionelement);
+  width: 100%;
+  margin-bottom: 3px;
+  padding: 12px 16px;
+  border-color: transparent;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+.task-box {
+  width: 100%;
+}
+
+.sortable-task {
+  box-shadow: 0 2px 2px 0 var(--borderboxshadow1),
+    0 1px 4px 0 var(--borderboxshadow2);
+  margin-bottom: 2px;
+  border-radius: 4px;
+  cursor: grab;
+}
+
+.sortable-task:hover {
+  border: 1px solid var(--lightdarkpurple);
+}
+
+.sortable-habit-task,
+.sortable-daily-task,
+.sortable-todo-task {
+  display: flex;
+  height: 73px;
+}
+
+.sortable-task:nth-child(1) > .interact-box {
+  background: var(--lightblue);
+}
+
+.sortable-task:nth-child(2) > .interact-box {
+  background: var(--lightgreen);
+}
+
+.sortable-task:nth-child(3) > .interact-box {
+  background: var(--midgold);
+}
+
+.interact-box {
+  min-width: 40px;
+  max-width: 40px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.habit-box-plus,
+.habit-box-minus {
+  width: 10px;
+  fill: var(--white);
+}
+
+.plus-box,
+.sortable-task-checkbox {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.main-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  background: var(--white);
+}
+
+.task-text {
+  font-size: 16px;
+  color: var(--darkmidgrey);
+  cursor: pointer;
+  width: 100%;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.counter {
+  align-self: flex-end;
+  font-size: 12px;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.checkbox-box input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ! Can't style native checkboxes so had to make my own */
+/* .task-checkbox {
+width: 28px;
+background: var(--white50);
+border: 1px solid transparent;
+cursor: pointer;
+margin-top: 16px;
+border-radius: 4px;
+} */
+
+.custom-checkbox {
+  top: 0;
+  left: 0;
+  height: 28px;
+  width: 28px;
+  background: hsla(0, 0%, 100%, 0.5);
+  border: 1px solid transparent;
+  cursor: pointer;
+  margin-top: 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-checkbox:hover {
+  background: var(--white75);
+}
+
+/* ! Can't make checkmark appear on checked checkbox or hover */
+.checkmark {
+  fill: var(--greycheck);
+  max-width: 16px;
+  /* max-height: 10px; */
+  /* display: none; */
+  /* opacity: 0; */
+}
+
+/* .custom-checkbox:hover ~ .checkmark {
+  display: block;
+}
+
+.custom-checkbox .checkmark ~ .task-checkbox:hover  {
+  display: block;
+  opacity: 1;
+} */
+
+.task-checkbox:hover {
+  background: var(--white75);
+}
+
+.section-header-right {
+  display: flex;
+}
+
+.purple-pill {
+  color: var(--white);
+  background: var(--lightdarkpurple);
+  line-height: 1.2;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px 0 var(--borderboxshadow2),
+    0 1px 2px 0 var(--borderboxshadow3);
+  width: 27.5px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px 0 4px 4px;
+}
+
+/* HABITS SECTION */
+.minus-box {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.interact-box-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: var(--interactboxcircle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.interact-box-circle:hover {
+  background: var(--interactboxcirclehover);
+}
+
+.background-box {
+  display: flex;
+  flex-direction: column;
+  /* position: absolute; */
+  width: 100%;
+  bottom: 32px;
+  color: var(--lightgrey2);
+  align-items: center;
+  z-index: 0;
+  justify-self: flex-end;
+}
+
+.background-icon {
+  max-height: 20px;
+  fill: var(--lightgrey2);
+  margin-bottom: 12px;
+}
+
+.background-head {
+  margin-bottom: 4px;
+}
+
+.background-text {
+  text-align: center;
+  font-size: 12px;
+}
+
+.background-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100% - 30px);
+}
+
+/* DAILIES SECTION */
+
+/* TO DO SECTION */
+
+/* REWARDS SECTION */
+/* 15 min break task */
+.break-task .reward-cost-box .break-reward-cost-img {
+  width: 24px;
+  margin-top: 8px;
+}
+
+.break-task {
+  display: flex;
+  max-height: 58px;
+}
+
+.break-task .reward-cost-box {
+  min-width: 40px;
+  max-width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.break-task-box .main-box {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.reward-cost-text {
+  color: var(--darkgold);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.reward-cost-box {
+  background: var(--lightgold);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Reward Tasks */
+.reward-task {
+  width: 94px;
+  height: 120px;
+}
+
+.break-task,
+.reward-task {
+  margin-bottom: 12px;
+}
+
+.reward-task .reward-cost-box .reward-cost-img {
+  width: 16px;
+  margin-right: 4px;
+}
+
+.reward-task .reward-cost-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.reward-task .reward-cost-text {
+  margin-bottom: 0;
+}
+
+.reward-task .main-box {
+  height: 92px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.shop-armoire {
+  width: 68px;
+  height: 68px;
+}
+
+.main-rewards {
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+  justify-content: center;
+  grid-column-gap: 10px;
+  grid-row-gap: 4px;
+  grid-template-columns: repeat(auto-fill, 94px);
+}
+
+/* ============================================================================ */
+/* ===================== S E C O N D A R Y    F O O T E R ===================== */
+/* ============================================================================ */
+.footsection {
+  background-color: var(--verylightgrey);
+  color: var(--midgrey);
+  display: grid;
+  padding: 24px 16px;
+  grid-template-columns: 2fr 2fr;
+  column-gap: 24px;
+  grid-template-areas:
+    "product company"
+    "community support"
+    "developers social"
+    "help help"
+    "donate-text donate-text"
+    "donate-button donate-button";
+}
+
+.footsection-subsection {
+  padding-top: 1em;
+}
+
+.footsection-subsection-header {
+  font-weight: 700;
+  font-size: 1em;
+  margin-bottom: 8px;
+}
+
+.footsection-subsection-list li {
+  margin-bottom: 8px;
+}
+
+.footsection-subsection-link {
+  font-weight: 400;
+  font-size: 1em;
+  word-wrap: break-word;
+}
+
+.product {
+  grid-area: product;
+}
+
+.company {
+  grid-area: company;
+}
+
+.community {
+  grid-area: community;
+}
+
+.support {
+  grid-area: support;
+}
+
+.developers {
+  grid-area: developers;
+}
+
+.social {
+  grid-area: social;
+}
+
+.donate {
+  grid-area: company;
+}
+
+.help {
+  grid-area: help;
+  grid-column: 1 / span 2;
+}
+
+/* Social */
+.social-icon-section {
+  display: flex;
+  padding-top: 4px;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  fill: var(--lightmidgrey);
+}
+
+.footsection-help-text {
+  font-size: 12px;
+}
+
+/* Donation Button */
+.donate-button {
+  border: 1px solid transparent;
+  box-shadow: 0 1px 3px 0 var(--borderboxshadow2),
+    0 1px 2px 0 var(--borderboxshadow3);
+  height: 32px;
+  font-weight: 700;
+  font-size: 1em;
+  width: 100%;
+  min-width: 100%;
+  white-space: nowrap;
+  grid-area: donate-button;
+  grid-column: span 2;
+}
+
+/* ======================================================= */
+/* ===================== F O O T E R ===================== */
+/* ======================================================= */
+
+footer {
+  background-color: var(--verylightgrey);
+  color: var(--midgrey);
+  padding: 0px 16px;
+  justify-self: flex-end;
+}
+
+.subfooter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: var(--lightgrey) 1px solid;
+  padding: 24px 8px;
+  width: 100%;
+}
+
+.footer-logo {
+  max-width: 24px;
+  max-height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  fill: var(--lightmidgrey);
+}
+
+/* ========================================================================================================== */
+/* ========================================================================================================== */
+/* ========================================================================================================== */
+
+/* ================================================================ */
+/* ===================== G R O U P    P A G E ===================== */
+/* ================================================================ */
+
+.group-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.purple-header {
+  background: linear-gradient(180deg, var(--purple), var(--middarkpurple));
+  min-height: 340px;
+  max-height: 340px;
+  padding: 32px;
+  text-align: center;
+  margin-top: -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.group-first-text,
+.group-second-text {
+  font-size: 48px;
+  line-height: 1.16;
+  text-align: center;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.group-first-text {
+  margin: 12px 0 24px 0;
+}
+
+.white {
+  color: var(--white);
+}
+
+.purp,
+.group-panel-title {
+  color: var(--midlightpurple);
+}
+
+.group-first-subtext {
+  color: var(--lightpurple);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.33;
+  max-width: 66.6666666667%;
+  padding: 0 12px;
+  margin-right: 0;
+  margin-bottom: 16px;
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.group-3-panel-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -107.5px auto 12px auto;
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.group-column {
+  flex: 0 0 33.3333333333%;
+  width: 33.3333333333%;
+  position: relative;
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.group-panel {
+  height: 416px;
+  border-radius: 8px;
+  min-width: 322px;
+  max-width: 340px;
+
+  background-color: var(--white);
+  box-shadow: 0 2px 2px 0 var(--borderboxshadow1),
+    0 1px 4px 0 var(--borderboxshadow2);
+  padding: 28px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: 14px;
+}
+
+.group-img1 {
+  width: 266px;
+  margin: 28px 0 14px 0;
+}
+
+.group-img2 {
+  width: 262px;
+  margin: 49px 0 52px 0;
+}
+
+.group-img3 {
+  width: 225px;
+  margin: 28px 0 42px 0;
+}
+
+.group-panel-line {
+  background: hsla(258, 8%, 32%, 0.2);
+  height: 1px;
+  margin: 16px 0;
+}
+
+.group-panel-title {
+  font-family: "Roboto Condensed", sans-serif;
+}
+
+.group-panel-text {
+  line-height: 20px;
+}
+
+.group-bottom-content {
+  margin: 0 74px 0 74px;
+  padding: 0 12px;
+  overflow: hidden;
+}
+
+.group-second-text {
+  line-height: 1.67;
+}
+
+.group-big-button {
+  width: 330px;
+  height: 96px;
+  border-radius: 8px;
+  font-size: 24px;
+  margin-top: 16px;
+  position: absolute;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.group-price-box {
+  margin-top: 175px;
+  margin-bottom: 64px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  color: var(--lightgrey2);
+}
+
+.group-dollar {
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.group-number {
+  font-size: 72px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.group-plus {
+  margin-left: 16px;
+  margin-right: 16px;
+  font-size: 34px;
+  margin-bottom: 0px;
+}
+
+.group-price-text {
+  font-size: 24px;
+  margin: 0 8px;
+}
+
+.group-price-text p {
+  margin-bottom: 0;
+}
+
+/* ========================================================================================================== */
+/* ========================================================================================================== */
+/* ========================================================================================================== */
+
+/* ========================================================================== */
+/* ===================== C H A L L E N G E S    P A G E ===================== */
+/* ========================================================================== */
+
+.challenge-filter-col {
+  display: none;
+}
+
+.challenge-topper {
+  box-shadow: 0 1px 2px 0 hsla(264, 9%, 10%, 0.2);
+  height: 48px;
+  background: var(--offwhite2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.challenge-topper-title {
+  padding: 12px;
+  padding-bottom: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.my-challenges {
+  box-shadow: inset 0 -4px 0 var(--midlightpurple);
+}
+
+.challenge-content {
+  display: flex;
+}
+
+.challenge-section {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: 24px;
+}
+
+.challenge-section-title {
+  color: var(--midlightpurple);
+  font-size: 24px;
+  line-height: 1.67;
+  margin-bottom: 24px;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  width: 100%;
+}
+
+.challenge-button-box {
+  min-width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.challenge-button {
+  background: var(--white);
+  width: 151px;
+  margin-left: auto;
+  margin-bottom: 16px;
+}
+
+.challenge-button-text {
+  font-size: 14px;
+  color: var(--midgrey);
+  margin-bottom: 0;
+}
+
+.challenge-button-svg {
+  fill: hsl(158, 71%, 37%);
+  min-width: 10px;
+  max-width: 10px;
+}
+
+.challenge-section-middle {
+  margin: 140px 0 0 25%;
+  padding: 0 12px;
+  color: var(--lightmidgrey);
+  text-align: center;
+  min-width: 198px;
+}
+
+.challenge-mid-icon {
+  width: 88.5px;
+  height: 76px;
+  fill: var(--lightgrey);
+  margin: 14px auto;
+}
+
+.challenge-middle-title {
+  font-family: "Roboto Condensed", sans-serif;
+  margin-bottom: 16px;
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.challenge-middle-text {
+  margin-bottom: 16px;
+  line-height: 20px;
+}
+
+/* ========================================================================================================== */
+/* ========================================================================================================== */
+/* ========================================================================================================== */
+
+/* ======================================================================= */
+/* ===================== R E S P O N S I V E N E S S ===================== */
+/* ======================================================================= */
+@media screen and (min-width: 768px) {
+  .content-topper {
+    padding: 16px 12px 12px 0;
+    justify-content: space-between;
+  }
+
+  .party-icon {
+    display: block;
+  }
+
+  .view-party {
+    display: block;
+  }
+
+  /* subheader */
+  .headsection .view-party {
+    margin-left: auto;
+    margin-right: 40px;
+    min-width: 68px;
+    padding: 4px 16px;
+    font-size: 14px;
+  }
+
+  /* Search and Tag section */
+  /* Search Bar */
+  .search-tags {
+    display: flex;
+    justify-self: center;
+    grid-column: 2;
+    align-items: center;
+    gap: 0.5em;
+    margin-left: 33.3333333333%;
+  }
+
+  /* Tag Dropdown Button */
+  .tag-dropdown {
+    display: block;
+  }
+
+  .tag-dropdown-icon {
+    fill: var(--midgrey);
+    width: 16px;
+  }
+
+  .tag-toggle-button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-width: 80px;
+    cursor: pointer;
+  }
+
+  .tag-dropdown-button {
+    background: var(--white);
+  }
+
+  .tag-dropdown-text {
+    margin-bottom: 0;
+    color: var(--midgrey);
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* ! Don't know how to make the drop shadow appear */
+  /* .#tag-toggler:checked ~ .tag-dropdown-button {
+    box-shadow: 0 3px 6px 0 rgba(26,24,29,.16),0 3px 6px 0 rgba(26,24,29,.24);
+  } */
+
+  /* Tag Dropdown Content */
+  .tag-toggled-content {
+    padding: 24px;
+    background: var(--white);
+    border-radius: 2px;
+    min-width: 302px;
+    min-height: 245px;
+    position: absolute;
+    transform: translate(-89%, 5%);
+    box-shadow: 0 2px 2px 0 var(--borderboxshadow1), 0 1px 4px 0 var(--borderboxshadow2);
+  }
+
+  /* Tag Dropdown Header */
+  .tag-head-container {
+    height: 60px;
+  }
+
+  .edit-tags {
+    color: var(--midlightpurple);
+    font-size: 12px;
+  }
+
+  /* Tag Dropdown Checkboxes */
+  .tag-dropdown-content-middle {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--offwhite2);
+  }
+
+  .day-checkbox {
+    width: 50%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .day-checkbox .checkbox-text {
+    margin-bottom: 14px;
+  }
+
+  /* Tag Dropdown Footer */
+  .tag-dropdown-content-bottom {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+  }
+
+  .cancel {
+    color: var(--lightgrey2);
+  }
+
+  .clear-filters {
+    color: var(--red);
+    font-size: 14px;
+  }
+
+  /* Add Task Button */
+  .add-task {
+    justify-self: end;
+    align-self: start;
+    margin-right: 1em;
+    min-width: 110px;
+  }
+
+  /* MAIN 4 SECTIONS */
+  .main-4-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* UNIVERSAL SECTION STYLING */
+  .section-content {
+    min-height: calc(100% - 30px);
+  }
+
+  /* FOOTER */
+  .subfooter p:nth-child(n + 2) {
+    display: none;
+  }
+
+  /* =========================================================== */
+  /* GROUP PAGE */
+  .group-column {
+    max-width: 380px;
+  }
+
+  .group-bottom-content {
+    max-width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    min-width: 348px;
+  }
+
+  /* =========================================================== */
+  /* CHALLENGES PAGE */
+  .challenge-filter-col {
+    display: block;
+  }
+
+  .sidebar {
+    background: var(--offwhite2);
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.43;
+    width: 236px;
+  }
+
+  .challenge-search-bar {
+    margin-bottom: 16px;
+  }
+
+  .challenge-filter-title {
+    font-size: 14px;
+    color: hsl(260, 8%, 42%);
+  }
+
+  .challenge-checkbox {
+    max-height: 26px;
+    margin-bottom: 8px;
+    min-width: 100%;
+  }
+
+  .challenge-checkbox .checkbox,
+  .challenge-checkbox .checkbox-text {
+    margin-bottom: 0;
+  }
+
+  .challenge-filter-section {
+    margin-bottom: 16px;
+  }
+
+  .challenge-section {
+    width: auto;
+    flex-grow: 1;
+  }
+
+  .challenge-section-topper {
+    display: flex;
+    height: 64px;
+  }
+
+  .challenge-section-title {
+    margin-bottom: 24px;
+    white-space: nowrap;
+  }
+
+  .challenge-button-box {
+    min-width: 131px;
+  }
+
+  .challenge-button {
+    height: 57px;
+    padding: 3.5px 32px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .challenge-section-middle {
+    max-width: 50%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  /*   HEADER */
+  /* Header expansion */
+  .head-container {
+    justify-content: normal;
+    flex-wrap: nowrap;
+  }
+
+  .logo {
+    order: -1;
+    position: static;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-top: 10px;
+  }
+
+  /* NAV MENU */
+  /* Burger Icon Gone */
+  .nav-menu {
+    display: none;
+  }
+
+  /* Nav Menu Items Displayed */
+  .drop-content {
+    order: 0;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
+
+  .nav-toggled-content {
+    display: flex;
+    text-align: left;
+    justify-content: normal;
+    align-items: center;
+  }
+
+  /* NAV MENU STYLING */
+  .nav-menu-text {
+    height: 100%;
+    border-bottom-color: transparent;
+    background-color: transparent;
+  }
+
+  .tasks,
+  .group {
+    padding: 5px 0;
+  }
+
+  .tasks {
+    box-shadow: inset 0 -4px 0 var(--midlightpurple);
+  }
+
+  /* NAV SUBMENU function */
+  .inv-hover:hover ~ .inv-toggled-content,
+  .shop-hover:hover ~ .shop-toggled-content,
+  .party-hover:hover ~ .party-toggled-content,
+  .guild-hover:hover ~ .guild-toggled-content,
+  .challenges-hover:hover ~ .challenges-toggled-content,
+  .help-hover:hover ~ .help-toggled-content {
+    display: block;
+  }
+
+  .dropdown-arrow {
+    display: none;
+  }
+
+  /* NAV SUBMENU STYLING */
+  .nav-submenu-toggled-content {
+    position: absolute;
+  }
+
+  .nav-menu-title {
+    margin-left: 0;
+    transform: translateX(0);
+  }
+
+  /* NAV CURRENCY READOUT */
+  .currency-readout {
+    background-color: transparent;
+    width: min-content;
+    order: 2;
+    margin-left: auto;
+    /* margin-right: 120px; */
+  }
+
+  .nav-right-container {
+    flex-shrink: 0;
+    margin-top: 0;
+    /* transform: translateX(-90px); */
+  }
+
+  .sync-button-img,
+  .notification-dropdown-img,
+  .user-dropdown-img {
+    min-height: 24px;
+    min-width: 24px;
+  }
+
+    /* Tag Dropdown Content */
+  .tag-toggled-content {
+    transform: translate(-20%, 5%);
+    min-width: 333px;
+  }
+
+  /* 4 main sections */
+  .main-4-sections {
+    grid-template-columns: 25% 25% 25% 25%;
+  }
+
+  /* ! Don't know how to stop To Do column filters from overflowing that column, on real page
+! to do text gets covered by them  */
+  /* .section-header {
+  max-width: 100%;
+} */
+
+  /* Secondary Footer */
+  .footsection {
+    grid-template-areas:
+      "product company community support developers"
+      "help help help donate-button social"
+      "help help help donate-button social";
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .help {
+    grid-column: 1 / span 3;
+    grid-row: 2 / span 2;
+  }
+
+  .social {
+    grid-column: 5;
+    grid-row: 2 / span 2;
+  }
+
+  /* Donation Button */
+  .donate-button {
+    width: auto;
+    min-width: auto;
+    grid-column: 4;
+    grid-row: 3 / span 2;
+  }
+
+  /* FOOTER */
+  .subfooter {
+    flex-direction: row;
+    gap: 1em;
+  }
+
+  .subfooter p:nth-child(n + 2) {
+    display: block;
+    order: 3;
+  }
+
+  .subfooter p:nth-child(1) {
+    order: 0;
+  }
+
+  .footer-logo-box {
+    margin: 0 auto;
+  }
+
+  /* =========================================================== */
+  /* GROUP PAGE */
+  .group-big-button {
+    margin-left: 7.5%;
+  }
+
+  /* ================================================================= */
+  /* CHALLENGE PAGE */
+  .challenge-button-box {
+    min-width: auto;
+
+    /* min-width: 100%; */
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .challenge-button {
+    max-height: 32px;
+    width: 151px;
+    margin-left: auto;
+    margin-bottom: 16px;
+    padding: 0.219rem 0.75rem;
+  }
+
+  .challenge-button-text {
+    white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .small-logo {
+    display: none;
+  }
+
+  .big-logo {
+    display: block;
+    min-width: 128px;
+    height: 26px;
+  }
+
+  .nav-menu-text {
+    font-size: 16px;
+  }
+
+    /* Tag Dropdown Content */
+  .tag-toggled-content {
+    transform: translate(-20%, 5%);
+    min-width: 472px;
+  }
+
+  footer {
+    padding: 0 142px 1rem 142px;
+  }
+
+  .headandmain {
+    flex-grow: 1;
+  }
+}
